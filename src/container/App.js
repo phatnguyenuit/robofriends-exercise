@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Scroll from '../components/Scroll'
+import ErrorBoundary from '../components/ErrorBoundary'
 import RoboList from '../components/RoboList'
 import SearchBox from '../components/SearchBox'
 import './App.css'
@@ -35,7 +36,9 @@ export default class App extends Component{
                 <h1 className="f1">Robo Friends</h1>
                 <SearchBox onChange={this.onChangeInput} searchValue={this.state.searchInput}/>
                 <Scroll>
-                    <RoboList robos={filteredRobos}/>
+                    <ErrorBoundary>
+                        <RoboList robos={filteredRobos}/>
+                    </ErrorBoundary>
                 </Scroll>
             </div>
         );
